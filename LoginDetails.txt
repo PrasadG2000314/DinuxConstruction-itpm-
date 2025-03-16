@@ -1,0 +1,37 @@
+============SITE LOGINS=================
+UserName : smithgregor13@gmail.com
+password : 1235678
+Role     : ADMIN
+
+UserName : hiran@gmail.com
+password : 1235678
+Role     : SITE MANAGER
+
+UserName : janith@gmail.com
+password : 1235678
+Role     : FLEET MANAGER
+
+UserName : tharindu@gmail.com
+password : 1235678
+Role     : STOCK MANAGER
+
+UserName : nirmani@gmail.com
+password : 1235678
+Role     : FINANCE MANAGER
+
+UserName : anjana@gmail.com
+password : 1235678
+Role     : CUSTOMER RELATIONSHIP MANAGER
+
+UserName : ishan@gmail.com
+password : 1235678
+Role     : HR MANAGER
+
+UserName : ishan2@gmail.com
+password : 1235678
+Role     : CUSTOMER
+
+
+===============MONGO DB LOGIN================
+apexconstructionitp@gmail.com
+apex123con
