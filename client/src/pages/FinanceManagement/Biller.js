@@ -10,6 +10,7 @@ import Edit from '@mui/icons-material/Edit';
 function Biller() {
     const [biller, setBiller] = useState('');
 
+    // Function to handle update biller event
     const handleUpdate = (billerData) => {
         setBiller(billerData);
     }
