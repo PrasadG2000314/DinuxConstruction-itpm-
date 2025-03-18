@@ -35,6 +35,7 @@ function AddBiller() {
     const navigate = useNavigate();
     const theme = useTheme();
 
+    // State to store biller details
     const [billerDetails, setBillerDetails] = useState({
         billerId: "",
         type: "",
