@@ -1,4 +1,4 @@
-import { Box, Button, Grid, MenuItem, Paper, styled, Table, TableBody, TableCell, tableCellClasses, TableContainer, TableHead, TablePagination, TableRow, TextField, Typography, useTheme } from "@mui/material";
+/*import { Box, Button, Grid, MenuItem, Paper, styled, Table, TableBody, TableCell, tableCellClasses, TableContainer, TableHead, TablePagination, TableRow, TextField, Typography, useTheme } from "@mui/material";
 import Axios from "axios";
 import { useEffect, useState } from "react";
 import { errorAlert, scrollPage, successAlert } from "../../utils";
@@ -418,4 +418,4 @@ const StockTable = ({ rows, selectedRow, deleteStock }) => {
       </Grid>
     </Grid>
   );
-}
+}*/
