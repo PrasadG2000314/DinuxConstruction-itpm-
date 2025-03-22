@@ -10,6 +10,7 @@ import Edit from '@mui/icons-material/Edit';
 function Biller() {
     const [biller, setBiller] = useState('');
 
+    // Function to handle update biller event
     const handleUpdate = (billerData) => {
         setBiller(billerData);
     }
@@ -34,6 +35,7 @@ function AddBiller() {
     const navigate = useNavigate();
     const theme = useTheme();
 
+    // State to store biller details
     const [billerDetails, setBillerDetails] = useState({
         billerId: "",
         type: "",
@@ -43,6 +45,7 @@ function AddBiller() {
         accountNo: "",
     });
 
+    // Function to handle input changes
     const handleChange = (field, value) => {
         setBillerDetails((prevDetails) => ({
             ...prevDetails,
