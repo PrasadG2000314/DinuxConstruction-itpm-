@@ -80,7 +80,7 @@ const FleetForm = ({ addFleetDetail, updateFleetDetail, submitted, data, isEdit,
         <Typography variant="h4">Transportation Details</Typography>
       </Grid>
 
-      <Grid item md={6}>
+      <Grid item md={6} mt={2}>
         <TextField
           select
           id="VehicleType"
@@ -102,7 +102,7 @@ const FleetForm = ({ addFleetDetail, updateFleetDetail, submitted, data, isEdit,
         </TextField>
       </Grid>
 
-      <Grid item md={6}>
+      <Grid item md={6} >
         <TextField
           select
           margin="normal"
@@ -120,7 +120,7 @@ const FleetForm = ({ addFleetDetail, updateFleetDetail, submitted, data, isEdit,
         </TextField>
       </Grid>
 
-      <Grid item md={6}>
+      <Grid item md={6} mt ={-2}>
         <TextField
           margin="normal"
           required
