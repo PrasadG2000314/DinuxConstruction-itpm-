@@ -17,7 +17,7 @@ import { addRequestHeaders, handleUnauthorized } from './utils';
 function App() {
 
   useEffect(() => {
-    document.title = 'Apex Construction';
+    document.title = 'Dinux Construction';
   }, []);
 
   const mode = useSelector((state) => state.mode);
