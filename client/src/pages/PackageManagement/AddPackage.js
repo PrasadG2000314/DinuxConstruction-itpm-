@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import storage from "../../Apis/firebase.config";
+import supabase from "../../Apis/supabaseClient.js";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import { TextField, Typography, Button, Grid, useTheme } from "@mui/material";
 import { CREATE_PACKAGE } from "../../EndPoints";
@@ -62,29 +62,46 @@ const AddNewPackage = () => {
   // image upload to firebase storage as in previous function
   const onUpload = async (e) => {
     const file = e.target.files[0];
-
-    if (file === null) {
+    console.log("File selected:", file);
+    if (!file) {
+      console.error("No file selected");
       return;
     }
-    const storageRef = ref(storage, `/packages/${file.name}`);
-    const uploadTask = uploadBytesResumable(storageRef, file);
-
-    uploadTask.on(
-      "state_changed",
-      (snapshot) => {
-        const percent = Math.round(
-          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-        );
-        setPercent(percent);
-      },
-      (err) => console.log(err),
-      () => {
-        getDownloadURL(uploadTask.snapshot.ref).then((url) => {
-          setHomeImage(url);
-        });
-      }
-    );
+  
+    // Optional: Rename the file for uniqueness
+    const fileName = `${Date.now()}_${file.name}`;
+  
+    // Your bucket name (check this in Supabase dashboard)
+    const bucketName = 'dinuxconstruction'; // ✅ must match exactly!
+  
+    // Upload the file to Supabase Storage
+    const { data, error } = await supabase
+      .storage
+      .from(bucketName)
+      .upload(fileName, file);
+  
+    if (error) {
+      console.error("Error uploading file:", error.message);
+      return;
+    }
+  
+    console.log("File uploaded successfully:", data);
+  
+    // Get the public URL for the uploaded file
+    const { data: publicUrlData } = supabase
+      .storage
+      .from(bucketName)
+      .getPublicUrl(data.path);
+  
+    console.log("Public URL:", publicUrlData.publicUrl);
+  
+    // Set the public URL as the homeImage
+    setHomeImage(publicUrlData.publicUrl);  // ✅ Set homeImage state to the public URL
   };
+  
+  
+  
+  
 
   function handleChange(event) {
     setFile(event.target.files[0]);

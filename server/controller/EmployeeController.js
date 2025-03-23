@@ -28,6 +28,8 @@ const EmployeeController = {
                 password += Math.floor(Math.random() * 10);
             }
 
+            console.log("Passwoard: ", password);
+
             sendEmployeeInitialPassword(firstName, email, password);
 
             const newUser = await UserController.createUser(email, password, role);

@@ -194,12 +194,6 @@ function SetSideBarLists({ handleItemClick, selectedContent }) {
 
          
 
-          <SideBarListItem
-            onClick={() => handleItemClick("LogReport")}
-            selected={selectedContent === "LogReport"}
-            primary="Log Report"
-            icon={<DescriptionIcon />}
-          />
         </span>
       )
 
