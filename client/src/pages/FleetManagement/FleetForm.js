@@ -139,12 +139,20 @@ const FleetForm = ({ addFleetDetail, updateFleetDetail, submitted, data, isEdit,
           required
           fullWidth
           label="Driver Mobile No"
-          type="Number"
+          type="tel" // Use 'tel' for mobile numbers (works better with mobile keyboards)
           name="DriverMobileNo"
           value={DriverMobileNo}
-          onChange={e => setDriverMobileNo(e.target.value)}
+          onChange={e => {
+          // Get the value of the input
+          const value = e.target.value;
+
+          if (/^\d*$/.test(value) && value.length <= 10) {
+          setDriverMobileNo(value); 
+          }
+        }}
         />
       </Grid>
+
 
       <Grid item md={12}>
         <TextField
