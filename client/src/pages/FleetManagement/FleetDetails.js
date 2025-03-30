@@ -5,7 +5,17 @@ import { useEffect, useState } from "react";
 import { errorAlert, successAlert } from "../../utils";
 import FleetTable from './FleetTable.js';
 import { CREATE_FLEET, DELETE_FLEET, GET_STOCK_REQUESTS_BY_STATUS, SEARCH_FLEET, UPDATE_FLEET, UPDATE_STOCK_REQUEST_STATUS } from "../../EndPoints";
-
+import Map from 'ol/Map.js';
+import View from 'ol/View.js';
+import TileLayer from 'ol/layer/Tile.js';
+import OSM from 'ol/source/OSM.js';
+import { fromLonLat, toLonLat } from 'ol/proj';
+import Feature from "ol/Feature";
+import Point from "ol/geom/Point";
+import VectorSource from "ol/source/Vector";
+import VectorLayer from "ol/layer/Vector";
+import Style from "ol/style/Style";
+import Icon from "ol/style/Icon";
 
 const FleetDetails = () => {
   const [FleetDetails, setFleetDetails] = useState([]);
@@ -14,11 +24,82 @@ const FleetDetails = () => {
   const [selectedFleetDetail, setSelectedFleetDetail] = useState({});
   const [selectedTransport, setSelectedTransport] = useState({});
   const [isEdit, setIsEdit] = useState(false);
+  const [userLocation, setUserLocation] = useState(null);
 
   useEffect(() => {
     getFleetDetails();
     getPendingStockRequsts();
   }, []);
+
+  useEffect(() => {
+    // Initialize Map
+    const map = new Map({
+      layers: [
+        new TileLayer({
+          source: new OSM(),
+        }),
+      ],
+      target: "map",
+      view: new View({
+        center: fromLonLat([0, 0]),
+        
+        zoom: 10,
+      }),
+    });
+
+    // Check for Geolocation Support
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const userCoords = [position.coords.longitude, position.coords.latitude];
+          setUserLocation(userCoords);
+
+          const userLonLat = fromLonLat(userCoords);
+
+          // Move map to user location
+          map.getView().setCenter(userLonLat);
+          map.getView().setZoom(15);
+
+          // Create a marker for user location
+          const userMarker = new Feature({
+            geometry: new Point(userLonLat),
+          });
+
+          userMarker.setStyle(
+            new Style({
+              image: new Icon({
+                src: "https://cdn-icons-png.flaticon.com/512/684/684908.png", // Marker Icon
+                scale: 0.1,
+              }),
+            })
+          );
+
+          const vectorSource = new VectorSource({
+            features: [userMarker],
+          });
+
+          const vectorLayer = new VectorLayer({
+            source: vectorSource,
+          });
+
+          map.addLayer(vectorLayer);
+        },
+        (error) => {
+          console.error("Error getting location:", error);
+          errorAlert("Could not retrieve location.");
+        }
+      );
+    } else {
+      console.error("Geolocation not supported.");
+      errorAlert("Geolocation is not supported in this browser.");
+    }
+
+
+    return () => {
+      map.setTarget(null);
+    };
+  }, []);
+
 
   const getFleetDetails = () => {
     Axios.get(SEARCH_FLEET)
@@ -147,6 +228,9 @@ const FleetDetails = () => {
           window.confirm("Are you sure?") && deleteFleetDetail(data);
         }}
       />
+      <Box style={{ width: '100%', height: '500px' }}> 
+      <div id="map" class="map" tabindex="0" style={{ width: "100%", height: "100%" }}></div>
+      </Box>
     </Box>
   );
 }
