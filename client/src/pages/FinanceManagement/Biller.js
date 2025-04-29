@@ -45,6 +45,7 @@ function AddBiller() {
         accountNo: "",
     });
 
+    // Function to handle input changes
     const handleChange = (field, value) => {
         setBillerDetails((prevDetails) => ({
             ...prevDetails,
