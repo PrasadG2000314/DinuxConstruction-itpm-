@@ -14,6 +14,7 @@ export default function CustomerInstallment() {
 
   // State to store customer sites
   const [customerSites, setCustomerSites] = useState({});
+  // State to store payment details
   const [paymentDetails, setPaymentDetails] = useState({
     customerId: "",
     siteId: "",
@@ -22,6 +23,7 @@ export default function CustomerInstallment() {
     description: "",
   });
 
+  // Function to update payment details state
   const handleChange = (field, value) => {
     setPaymentDetails((prevDetails) => ({
       ...prevDetails,
