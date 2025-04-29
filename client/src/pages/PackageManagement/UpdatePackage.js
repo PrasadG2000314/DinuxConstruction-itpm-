@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
-import storage from "../../Apis/firebase.config";
+import supabase from "../../Apis/supabaseClient.js";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import { TextField, Typography, Button, Grid, MenuItem, useTheme } from "@mui/material";
 import { useSelector } from 'react-redux';
@@ -52,28 +52,47 @@ const UpdatePackage = ({ data, submitted }) => {
   const onUpload = async (e) => {
     const file = e.target.files[0];
 
-    if (file === null) {
+    if (!file) {
+      console.error("No file selected");
       return;
     }
-    const storageRef = ref(storage, `/packages/${file.name}`);
-    const uploadTask = uploadBytesResumable(storageRef, file);
 
-    uploadTask.on(
-      "state_changed",
-      (snapshot) => {
-        const percent = Math.round(
-          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-        );
-        setPercent(percent);
-      },
-      (err) => console.log(err),
-      () => {
-        getDownloadURL(uploadTask.snapshot.ref).then((url) => {
-          setHomeImage(url);
-        });
-      }
-    );
-  };
+    // Optional: Rename the file for uniqueness
+    const fileName = `${Date.now()}_${file.name}`;
+
+    // Your bucket name (check this in Supabase dashboard)
+    const bucketName = 'dinuxconstruction'; // Ensure this matches your Supabase bucket name
+
+    // Upload the file to Supabase Storage
+    const { data, error } = await supabase
+      .storage
+      .from(bucketName)
+      .upload(fileName, file);
+
+    if (error) {
+      console.error("Error uploading file:", error.message);
+      return;
+    }
+
+    console.log("File uploaded successfully:", data);
+
+    // Get the public URL for the uploaded file
+    const { data: publicUrlData, error: urlError } = supabase
+      .storage
+      .from(bucketName)
+      .getPublicUrl(data.path);
+
+    if (urlError) {
+      console.error("Error fetching public URL:", urlError.message);
+      return;
+    }
+
+    console.log("Public URL:", publicUrlData.publicUrl);
+
+    // Set the public URL as the homeImage
+    setHomeImage(publicUrlData.publicUrl);  // Set homeImage state to the public URL
+};
+
 
   if (!data) {
     return <div>No data found.</div>;

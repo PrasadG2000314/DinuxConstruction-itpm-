@@ -17,7 +17,7 @@ const Footer = () => {
       <Box sx={{ backgroundColor: theme.palette.background.transparent, padding: "2em 0 0 0", }}>
         <img
           alt="logo"
-          src="/img/logo.png"
+          src="/img/itpm1.png"
           style={{ height: 80, width: 200 }}
         />
         <Grid container spacing={3} style={{ margin: "2em 0 2em 2em" }}>
@@ -34,7 +34,7 @@ const Footer = () => {
                 textAlign: "justify"
               }}
             >
-              Apex Construction is committed to advancing the construction
+              Dinux Construction is committed to advancing the construction
               industry by improving the lives of people working in construction,
               driving technology innovation, and building a global community of
               groundbreakers. Our connected global construction platform unites
@@ -55,7 +55,7 @@ const Footer = () => {
                 fontFamily: theme.palette.typography.poppins
               }}
             >
-              New to Apex?
+              New to Dinux?
             </Typography>
             <ul style={{ listStyle: "none", padding: 0 }}>
               <li style={{ marginBottom: "1em" }}>
@@ -123,7 +123,7 @@ const Footer = () => {
                 fontFamily: "Heebo, sans-serif",
               }}
             >
-              New to Apex?
+              New to Dinux?
             </Typography>
             <ul style={{ listStyle: "none", padding: 0 }}>
               <li style={{ marginBottom: "1em" }}>
@@ -190,7 +190,7 @@ const Footer = () => {
               sx={{ color: theme.palette.text.grey }}
               fontSize="16px"
             >
-              &copy; {new Date().getFullYear()} All rights reserved | Apex
+              &copy; {new Date().getFullYear()} All rights reserved | Dinux
             </Typography>
           </Grid>
         </Grid>

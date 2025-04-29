@@ -39,7 +39,7 @@ const VehicleForm = ({ addVehicle, updateVehicle, submitted, data, isEdit }) => 
         <Typography variant="h5" gutterBottom>Add Vehicles</Typography>
       </Grid>
 
-      <Grid item md={6}>
+      <Grid item md={6} mt={2}>
         <TextField
           type="number"
           required
@@ -67,7 +67,7 @@ const VehicleForm = ({ addVehicle, updateVehicle, submitted, data, isEdit }) => 
         />
       </Grid>
 
-      <Grid item md={6}>
+      <Grid item md={6} mt={2}>
         <TextField
           select
           id='VehicleType'

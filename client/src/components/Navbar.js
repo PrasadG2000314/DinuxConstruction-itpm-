@@ -95,7 +95,7 @@ function Header() {
             <Button href="/">
               <img
                 alt="logo"
-                src="/img/logo.png"
+                src="img/itpm1.png"
                 style={{ height: 70, width: 200 }}
               />
             </Button>

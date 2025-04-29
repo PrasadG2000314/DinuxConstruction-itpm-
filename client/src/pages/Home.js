@@ -172,7 +172,7 @@ const AboutSection = () => {
       >
         <Grid container spacing={3}>
           <Grid item xs={12} md={6}>
-            <img src="img/sideimg.png" alt="" sx={{ width: '100%' }} />
+            <img src="img/sideimg.png" alt="" style={{ width: '100%' }} />
           </Grid>
           <Grid item xs={12} md={6}>
             <Box sx={{ padding: '0 20px' }}>
@@ -526,13 +526,13 @@ const ContactSection = () => {
                 <span>
                   <Phone /> Phone
                 </span>{' '}
-                0712345678
+                071-1234567
               </Typography>
               <Typography variant="body1" paragraph>
                 <span>
                   <Email /> Email
                 </span>{' '}
-                apexconstruction@gmail.com
+                Dinuxconstruction@gmail.com
               </Typography>
 
             </Grid>
