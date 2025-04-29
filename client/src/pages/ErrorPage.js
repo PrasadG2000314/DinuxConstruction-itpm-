@@ -1,7 +1,7 @@
 import React from 'react';
 import { Typography, Container, Button } from '@mui/material';
 import { Link } from 'react-router-dom';
-
+///error page
 function ErrorPage() {
   return (
     <Container maxWidth="sm" style={{ textAlign: 'center', marginTop: '100px' }}>

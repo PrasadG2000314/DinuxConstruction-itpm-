@@ -57,7 +57,7 @@ export default function Signup() {
     }
 
     if (password !== cpassword) {
-      errorAlert("Password and password confirmation does not match");
+      errorAlert ("Password and password confirmation does not match");
       return;
     }
 
