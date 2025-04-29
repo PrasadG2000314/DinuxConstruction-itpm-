@@ -7,7 +7,7 @@ import CustomizedTable from "../../components/Table";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
 
-
+//update login report
 function LogReport() {
 
     const theme = useTheme();
