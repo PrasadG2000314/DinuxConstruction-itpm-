@@ -12,6 +12,7 @@ export default function CustomerInstallment() {
   const theme = useTheme();
   const loggedUser = useSelector((state) => state.user);
 
+  // State to store customer sites
   const [customerSites, setCustomerSites] = useState({});
   const [paymentDetails, setPaymentDetails] = useState({
     customerId: "",
