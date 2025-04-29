@@ -5,7 +5,7 @@ import axios from "axios";
 import { CREATE_EMPLOYEE, GET_EMPLOYEE_ID } from "../../EndPoints";
 import { errorAlert, successAlert, userTypes } from "../../utils.js";
 import { useSelector } from 'react-redux';
-
+//add employee component
 function AddEmployee() {
 
     const navigate = useNavigate();
