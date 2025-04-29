@@ -1,4 +1,3 @@
-// routes/StockRouter.js
 import express from 'express';
 const router = express.Router();
 
@@ -7,5 +6,5 @@ router.get('/', (req, res) => {
   res.send('Stock route');
 });
 
-// Export the router
-export { router as stockRouter };
+// Export the router as default
+export default router;
