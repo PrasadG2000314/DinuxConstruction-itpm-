@@ -54,6 +54,7 @@ function AddBiller() {
     };
 
     useEffect(() => {
+        // Fetch new biller ID when component mounts
         const loadBillerId = async () => {
             axios
                 .get(GET_BILLER_ID, {})
