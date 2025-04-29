@@ -70,6 +70,7 @@ function AddBiller() {
         loadBillerId();
     }, [navigate]);
 
+    // Function to handle form submission
     const handleSubmit = (event) => {
         event.preventDefault();
 
