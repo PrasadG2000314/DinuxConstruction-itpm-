@@ -4,6 +4,8 @@ import App from './App';
 import globalReducer from './state.js';
 import { configureStore } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
+import 'leaflet/dist/leaflet.css';
+
 import {
   persistStore,
   persistReducer,
