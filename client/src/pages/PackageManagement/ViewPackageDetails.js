@@ -92,6 +92,8 @@ const ViewPackageDetails = ({ packageId }) => {
       navigate("/login");
     } else {
       getCustomerDetails();
+      console.log("description", description);
+      console.log("packageName", packageName);
       await axios
         .post(BUY_PACKAGE, {
           name: packageName,
