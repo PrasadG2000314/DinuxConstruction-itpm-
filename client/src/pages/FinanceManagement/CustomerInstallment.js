@@ -12,9 +12,7 @@ export default function CustomerInstallment() {
   const theme = useTheme();
   const loggedUser = useSelector((state) => state.user);
 
-  // State to store customer sites
   const [customerSites, setCustomerSites] = useState({});
-  // State to store payment details
   const [paymentDetails, setPaymentDetails] = useState({
     customerId: "",
     siteId: "",
@@ -23,7 +21,6 @@ export default function CustomerInstallment() {
     description: "",
   });
 
-  // Function to update payment details state
   const handleChange = (field, value) => {
     setPaymentDetails((prevDetails) => ({
       ...prevDetails,
