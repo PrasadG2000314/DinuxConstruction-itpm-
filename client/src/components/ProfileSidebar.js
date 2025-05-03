@@ -1,5 +1,3 @@
-
-
 import React, { useState } from "react";
 import {
   Typography,
@@ -149,22 +147,8 @@ function SetSideBarLists({ handleItemClick, selectedContent }) {
             icon={<AddIcon />}
           />
           
-          {
-          <SideBarListItem
-            onClick={() => handleItemClick("addAddOns")}
-            selected={selectedContent === "addAddOns"}
-            primary="Add Package Addons"
-            icon={<AddIcon />}
-          />
-          }
           
-          
-          <SideBarListItem
-            onClick={() => handleItemClick("viewAddOns")}
-            selected={selectedContent === "viewAddOns"}
-            primary="View Package Addons"
-            icon={<VisibilityIcon />}
-          />
+        
 
           <SideBarListItem
             onClick={() => handleItemClick("addSite")}
@@ -178,27 +162,6 @@ function SetSideBarLists({ handleItemClick, selectedContent }) {
             selected={selectedContent === "viewSite"}
             primary="View Site"
             icon={<VisibilityIcon />}
-          />
-
-          <SideBarListItem
-            onClick={() => handleItemClick("StockReq")}
-            selected={selectedContent === "StockReq"}
-            primary="Request Stock"
-            icon={<AutorenewIcon />}
-          />
-
-          <SideBarListItem
-            onClick={() => handleItemClick("stock")}
-            selected={selectedContent === "stock"}
-            primary="Stock"
-            icon={<StorageIcon />}
-          />
-
-          <SideBarListItem
-            onClick={() => handleItemClick("buyStock")}
-            selected={selectedContent === "buyStock"}
-            primary="Stock Replenish"
-            icon={<ShoppingCartIcon />}
           />
 
           <SideBarListItem
@@ -229,26 +192,8 @@ function SetSideBarLists({ handleItemClick, selectedContent }) {
             icon={<AccountBalanceIcon />}
           />
 
-          <SideBarListItem
-            onClick={() => handleItemClick("makePayment")}
-            selected={selectedContent === "makePayment"}
-            primary="Make Transaction"
-            icon={<CreditCardIcon />}
-          />
+         
 
-          <SideBarListItem
-            onClick={() => handleItemClick("financialReport")}
-            selected={selectedContent === "financialReport"}
-            primary="Financial Report"
-            icon={<DescriptionIcon />}
-          />
-
-          <SideBarListItem
-            onClick={() => handleItemClick("LogReport")}
-            selected={selectedContent === "LogReport"}
-            primary="Log Report"
-            icon={<DescriptionIcon />}
-          />
         </span>
       )
 
