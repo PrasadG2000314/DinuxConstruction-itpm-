@@ -144,6 +144,7 @@ function AddBiller() {
                     required
                     fullWidth
                     id="name"
+                    type="string"
                     label="Name"
                     name="name"
                     autoComplete="name"
