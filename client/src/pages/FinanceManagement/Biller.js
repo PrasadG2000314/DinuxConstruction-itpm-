@@ -139,18 +139,22 @@ function AddBiller() {
                 </TextField>
             </Grid>
             <Grid item md={6}>
-                <TextField
-                    margin="normal"
-                    required
-                    fullWidth
-                    id="name"
-                    type="string"
-                    label="Name"
-                    name="name"
-                    autoComplete="name"
-                    onChange={(e) => handleChange('name', e.target.value)}
-                />
-            </Grid>
+    <TextField
+        margin="normal"
+        required
+        fullWidth
+        id="name"
+        label="Name"
+        name="name"
+        autoComplete="name"
+        value={billerDetails.name}
+        onChange={(e) => {
+            const onlyLetters = e.target.value.replace(/[^a-zA-Z\s]/g, '');
+            handleChange('name', onlyLetters);
+        }}
+    />
+</Grid>
+
             <Grid item md={6}>
                 <TextField
                     margin="normal"
