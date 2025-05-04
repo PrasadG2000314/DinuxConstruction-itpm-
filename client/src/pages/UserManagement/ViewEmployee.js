@@ -69,7 +69,7 @@ function ViewEmployee() {
 
     const handleDelete = () => {
         axios
-            .get(DELETE_EMPLOYEE + employeeDetails.email + "/" + loggedUser.userType, {})
+            .delete(DELETE_EMPLOYEE + employeeDetails.email + "/" + loggedUser.userType, {})
             .then((response) => {
                 successAlert(response.data.message);
             })
