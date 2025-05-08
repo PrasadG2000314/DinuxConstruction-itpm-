@@ -9,8 +9,7 @@ const companyTransactionSchema = new mongoose.Schema({
     },
     
     payFrom: {
-        type: Schema.Types.ObjectId,
-        ref: 'Bank'
+        type: String,
     },
 
     payTo: {

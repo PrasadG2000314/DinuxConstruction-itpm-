@@ -99,7 +99,7 @@ function UtilityBillPayment() {
                 setPaymentDetails({
                     paymentType: "Utility",
                     payTo: "",
-                    payFrom: "",
+                    payFrom: "BOC",
                     regarding: "",
                     amount: "",
                     description: "",
@@ -232,7 +232,7 @@ function BillerPayment() {
         paymentType: "Biller",
         type: "",
         payTo: "",
-        payFrom: "",
+        payFrom: "BOC",
         regarding: "",
         amount: "0",
         description: "",
@@ -292,7 +292,7 @@ function BillerPayment() {
                     paymentType: "Biller",
                     type: "",
                     payTo: "",
-                    payFrom: "",
+                    payFrom: "BOC",
                     regarding: "",
                     amount: "",
                     description: "",
@@ -369,26 +369,8 @@ function BillerPayment() {
                 </TextField>
             </Grid>
 
-            <Grid item md={4}>
-                <TextField
-                    select
-                    margin="normal"
-                    required
-                    fullWidth
-                    id="payFrom"
-                    label="Pay From"
-                    name="payFrom"
-                    autoComplete="payFrom"
-                    value={paymentDetails.payFrom}
-                    onChange={(e) => handleChange('payFrom', e.target.value)}
-                >
-                    {Object.values(banks).map((type) => (
-                        <MenuItem key={type} value={type}>
-                            {type}
-                        </MenuItem>
-                    ))}
-                </TextField>
-            </Grid>
+           
+
 
             <Grid item md={5}>
                 <TextField

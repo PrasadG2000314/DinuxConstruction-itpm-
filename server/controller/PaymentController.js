@@ -45,18 +45,12 @@ const PaymentController = {
                 accountNo
             } = req.body;
 
-            const compbank = await Bank.findOne({ bankName: payFrom });
-            if (!compbank) {
-                logger.error("Bank not found");
-                return res.status(404).json({ message: 'Bank not found' });
-            }
-
             let compTransaction;
             if (paymentType == "Utility") {
                 compTransaction = new CompanyTransaction({
                     paymentType,
                     payTo,
-                    payFrom: compbank._id,
+                    payFrom: "BOC",
                     regarding,
                     amount,
                     description,
@@ -65,7 +59,7 @@ const PaymentController = {
                 compTransaction = new CompanyTransaction({
                     paymentType,
                     payTo,
-                    payFrom: compbank._id,
+                    payFrom: "BOC",
                     regarding,
                     amount,
                     description,
@@ -74,7 +68,7 @@ const PaymentController = {
                 compTransaction = new CompanyTransaction({
                     paymentType,
                     payTo,
-                    payFrom: compbank._id,
+                    payFrom: "BOC",
                     regarding,
                     amount,
                     description,
