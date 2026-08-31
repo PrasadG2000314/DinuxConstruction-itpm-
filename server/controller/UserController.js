@@ -40,16 +40,22 @@ const UserController = {
 
     loginUser: async (req, res) => {
 
-        const { email, password } = req.body
+        const { email, password } = req.body;
+        logger.info(`Login attempt: email='${email}', password='${password}'`);
 
-        const user = await User.findOne({ email: email });
+        const user = await User.findOne({ email: email ? email.trim() : "" });
+        if (!user) {
+            logger.error(`User not found with email='${email}'`);
+        } else {
+            logger.info(`User found. Verifying password...`);
+        }
 
         if (user && (await bcrypt.compare(password, user.password))) {
             const userLogin = {
                 user,
                 token: generateToken(user._id)
             }
-            logger.info("User Login Succcess")
+            logger.info("User Login Success")
             res.status(200).json(userLogin)
         } else {
             logger.error("User Login Failed")

@@ -12,6 +12,11 @@ const authorizeUser = async (req, res, next) => {
         const decoded = jwt.verify(token, process.env.JWT_SECRET)
         const user = await User.findById(decoded.id)
 
+        if (!user) {
+            logger.info("User associated with token not found");
+            return res.status(401).json({ message: 'Unauthorized' });
+        }
+
         const accessRules = {
             [UserType.ADMIN]: ['/user', '/employee', '/customer', '/site', '/package', '/finance', '/biller', '/stock', '/packageaddon', '/fleet', '/vehicle'],
             [UserType.HR_MANAGER]: ['/user', '/employee'],
